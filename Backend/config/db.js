@@ -25,7 +25,6 @@ export const pool = new Pool({
   },
 });
 
-console.log(pool,"pool is ")
 /**
  * ConnectDB(): 
  * Connects to the PostgreSQL database using the connection pool.
@@ -35,7 +34,7 @@ console.log(pool,"pool is ")
 export const connectDB = async () => {
     try {
         await pool.connect();
-        console.log('Connected to the database');
+        console.info('Connected to the database');
 
     } catch (error) {
         console.error('Error connecting to the database', error);
