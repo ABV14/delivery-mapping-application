@@ -6,7 +6,6 @@ import historyRoute from './routes/historyRoute.js';
 import { connectDB } from './config/db.js';
 
 dotenv.config(); // Load .env file into process.env
-connectDB(); // Connect to the database
 
 const app = express();
 
@@ -46,6 +45,8 @@ app.use(express.json());
 
 app.use('/distance', distanceRoute); // To use distance route for distance calculation
 app.use('/history', historyRoute); // To retrive history of distance calculation for previous queries
+connectDB(); // Connect to the database
+
 app.get('/', (req, res) => {
     res.send('Backend Started Running!!!!');
 });
