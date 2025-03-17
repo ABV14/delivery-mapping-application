@@ -7,7 +7,6 @@ This README provides detailed instructions for setting up and running the projec
 ## Prerequisites
 
 - [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/install/) (often bundled with Docker Desktop)
 
 
 ## Project Structure
