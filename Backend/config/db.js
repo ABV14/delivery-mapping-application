@@ -17,12 +17,9 @@ const { Pool } = pkg;
 // ensuring efficient database operations within the app.
 
 const connectionString = process.env.SUPABASE_POSTGRES_CONNECTION_STRING
-
+console.log(connectionString);
 export const pool = new Pool({
   connectionString,
-  ssl: {
-    rejectUnauthorized: false, 
-  },
 });
 
 /**
