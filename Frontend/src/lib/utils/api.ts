@@ -22,13 +22,16 @@ export async function fetchAPI<T>(url: string, options: RequestOptions={}): Prom
 
 export async function get<T>(url:string):Promise<T | undefined> {
     return fetchAPI<T>(url,{
-        method:"GET"
+        method:"GET",
+        mode: 'cors',
+
     })
 }
 
 export async function post<T, U>(url:string, payload:T):Promise<U | undefined> {
     return fetchAPI<U>(url,{
         method:"POST",
+        mode: 'cors',
         headers:{
             'Content-type':'application/json'
         },
