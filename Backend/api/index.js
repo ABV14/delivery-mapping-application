@@ -2,7 +2,7 @@ import serverless from 'serverless-http';
 import app from '../index.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDB from '../config/db.js';
+import {connectDB} from '../config/db.js';
 
 dotenv.config(); 
 
