@@ -78,7 +78,7 @@
 				notificationStatus = {
 					type: 'failure',
 					success: false,
-					message: result?.message,
+					message: "Address not found",
 					active: true,
 					baseMessage: 'Calculation Failed'
 				};
