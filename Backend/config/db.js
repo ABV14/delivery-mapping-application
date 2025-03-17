@@ -16,8 +16,7 @@ const { Pool } = pkg;
 // This pool will manage and reuse client connections to the PostgreSQL database,
 // ensuring efficient database operations within the app.
 
-const connectionString = process.env.POSTGRES_URL
-const caCert = process.env.SUPABASE_CA_CERT && process.env.SUPABASE_CA_CERT.replace(/\\n/g, '\n');
+const connectionString = process.env.SUPABASE_POSTGRES_CONNECTION_STRING
 
 export const pool = new Pool({
   connectionString,
