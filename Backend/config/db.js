@@ -22,8 +22,7 @@ const caCert = process.env.SUPABASE_CA_CERT && process.env.SUPABASE_CA_CERT.repl
 export const pool = new Pool({
   connectionString,
   ssl: {
-    rejectUnauthorized: true, 
-    ca: caCert,               
+    rejectUnauthorized: false, 
   },
 });
 
