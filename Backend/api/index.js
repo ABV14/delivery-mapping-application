@@ -20,10 +20,7 @@ console.log('Allowed origins:', allowedOrigins);
 app.use(cors({
   origin: (origin, callback) => {
     console.log("origigigi", origin)
-    // If no origin is provided (like in some server-to-server requests), allow it
-    if (!origin) return callback(null, true);
-
-    // If the origin is in the allowedOrigins array, allow it
+    console.log("origigigi is true",allowedOrigins.includes(origin));
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
