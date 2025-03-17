@@ -15,7 +15,6 @@ if (process.env.ALLOWED_ORIGINS) {
 } else {
   allowedOrigins = [];
 }
-console.log('Allowed origins:', allowedOrigins);
 
 app.use(cors({
   origin: (origin, callback) => {
