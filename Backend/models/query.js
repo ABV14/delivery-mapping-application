@@ -60,7 +60,6 @@ The insertQuery function handles insertion operations of the new user requests
 export const insertQuery = async (source_address, destination_address, distance_km, distance_miles) => {
     
     // Checking if the queries table exist, if not exists it creates a new table
-    const tableExists = await createQueryTable();
     
     console.log(`Debug: Source Address:${source_address} destination_addrees:${destination_address}  distance_km =", ${distance_km}, "distance miles:${distance_miles}`);
   
