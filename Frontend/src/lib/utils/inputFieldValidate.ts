@@ -19,7 +19,7 @@ export function validateField(value:string,label:string):{ message: string, vali
 }
 
 export function checkInvalidCharacter(value:string){
-    if(/[<>'"();]/.test(value)){
+    if(/\b(SELECT|INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|TRUNCATE|EXEC|UNION|--|;|\/\*|\*\/)\b/i.test(value)){
         return true ;
     }
     return false;

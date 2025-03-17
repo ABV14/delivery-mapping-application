@@ -69,7 +69,7 @@
 				notificationStatus = {
 					type: 'failure',
 					success: false,
-					message: 'Something went wrong and the calculation failed',
+					message: result?.message,
 					active: true,
 					baseMessage: 'Calculation Failed'
 				};
