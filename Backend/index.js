@@ -32,15 +32,15 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static('public'))
 
-
-app.use('/distance', distanceRoute); // To use distance route for distance calculation
-app.use('/history', historyRoute); // To retrive history of distance calculation for previous queries
-connectDB(); // Connect to the database
-
 app.get('/', (req, res) => {
   app.use(express.static('public'))
     res.send('Backend Started Running!!!!');
 });
+
+app.use('/distance', distanceRoute); // To use distance route for distance calculation
+app.use('/history', historyRoute); // To retrive history of distance calculation for previous queries
+await connectDB(); // Connect to the database
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Internal Server Error');
