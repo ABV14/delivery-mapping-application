@@ -79,8 +79,10 @@
     border-left: 3px red solid;
   }
   .toast.loading {
-    background-color: #ffc107;
+    background-color: #42b5ee;
     color: black;
+    border:1px rgb(4, 0, 255) solid;
+    border-left: 3px rgb(12, 8, 129) solid;
   }
 .success-status{
     height: 35%;

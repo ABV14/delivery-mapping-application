@@ -32,6 +32,15 @@
 	async function calculateDistance() {
 		const requestBody: DistanceRequest = { source, destination };
 		try {
+
+			notificationStatus = {
+				type: 'loading',
+				success: false,
+				message: 'Please wait, Calculation in Progress',
+				active: true,
+				baseMessage: 'Calculation in Progress'
+			};
+
 			const result = await post<
 				DistanceRequest,
 				{
@@ -94,7 +103,7 @@
 		}
 	}
 
-	function updateNotificationStatus() {
+	function clearNotificationStatus() {
 		notificationStatus = {
 			type: '',
 			success: false,
@@ -158,7 +167,7 @@
 
 	{#if notificationStatus.active}
 		<Toast
-			updatenotificationStatus={updateNotificationStatus}
+			updatenotificationStatus={	 clearNotificationStatus() }
 			notificationstatus={notificationStatus}
 		/>
 	{/if}
