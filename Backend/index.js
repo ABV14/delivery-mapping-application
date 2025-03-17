@@ -9,7 +9,27 @@ dotenv.config(); // Load .env file into process.env
 connectDB(); // Connect to the database
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
+  : [];
+console.log('Allowed origins:', allowedOrigins);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like curl or Postman) if desired:
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
+
+
 app.use(express.json());
 
 
