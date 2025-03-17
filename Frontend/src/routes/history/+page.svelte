@@ -3,9 +3,8 @@
 	import { previousQueries } from '../../stores/previousQueriesStore';
 	import { get } from '$lib/utils/api';
 	import Toast from '$lib/components/notifications/Toast.svelte';
-  import type { PreviousQuery } from '$lib/types';
+ 	import type { PreviousQuery } from '$lib/types';
 
-	let tableData: PreviousQuery[] = $state([]);
 	let didFetch: boolean = $state(false);
  
   let notificationStatus: App.NotificationStatus = $state({
@@ -15,6 +14,8 @@
 		active: false,
 		baseMessage: ''
 	});
+
+	// Function to make an api call to backend and fetch the history of previous and assigns to the global store 
 	async function fetchPreviousQueries() {
 		try {
 			const result = await get<{success:boolean, data:PreviousQuery[] | undefined}>('/history');
@@ -53,7 +54,6 @@
 		}
 	}
 
-	// Use Svelte 5's $effect rune to trigger fetchPreviousQueries once upon initialization.
 	$effect(() => {
 		if (!didFetch) {
 			console.log('Fetching previous queries...');
@@ -63,11 +63,8 @@
 	});
 
 	// Optional: Log whenever tableData changes.
-	$effect(() => {
-		console.log('tableData updated:', tableData);
-	});
 
-  function updateNotificationStatus() {
+  function clearNotificationStatus() {
 		notificationStatus = {
 			type: '',
 			success: false,
@@ -87,7 +84,7 @@
 	<p id="previous-queries-description">History of the User's Queries</p>
 	<PreviousQueries />
   {#if notificationStatus.active}
-  <Toast updatenotificationStatus={updateNotificationStatus}  notificationstatus={notificationStatus} />
+  <Toast updatenotificationStatus={clearNotificationStatus}  notificationstatus={notificationStatus} />
 {/if}
 </main>
 

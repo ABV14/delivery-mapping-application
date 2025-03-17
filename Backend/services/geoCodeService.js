@@ -77,10 +77,9 @@ export const calculateDistanceUsingCoordinates = (sourceCoordinates, destination
         (Math.cos(sourceLatitude) * Math.cos(destinationLatitude) *
         (Math.sin(distanceInLongitudeInRadians / 2) ** 2));
 
-    console.log('half_chord_length (before correction):', half_chord_length);
 
     half_chord_length = Math.min(1, Math.max(0, half_chord_length));
-    console.log('half_chord_length (after correction):', half_chord_length);
+    console.log('half_chord_length ', half_chord_length);
 
     // Formula for finding angular distance 
     const angularDistance = 2 * Math.atan2(Math.sqrt(half_chord_length), Math.sqrt(1 - half_chord_length));

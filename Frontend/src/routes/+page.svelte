@@ -1,3 +1,4 @@
+<!-- Landing page for the distance calculator application-->
 <script lang="ts">
 	import InputField from '$lib/components/InputField.svelte';
 	import DistanceUnitSelector from '$lib/components/distanceCalculator/DistanceUnitSelector.svelte';
@@ -28,7 +29,7 @@
 		baseMessage: ''
 	});
 
-
+// Function to make an api call to backend and fetch distance between 2 locations
 	async function calculateDistance() {
 		const requestBody: DistanceRequest = { source, destination };
 		try {
@@ -48,7 +49,7 @@
 					message: string | undefined;
 				}
 			>('/distance', requestBody);
-			console.log(result);
+			console.log("response of distance call", result);
 			if (result && result.success && result.data) {
 				const distanceInKms: number = Number(result.data.distance_in_Kms);
 				const distanceInMiles: number = Number(result.data.distance_in_Miles);
@@ -82,7 +83,6 @@
 					baseMessage: 'Calculation Failed'
 				};
 				console.warn('Failed to fetch queries:', result);
-				console.error('fetch status:', notificationStatus);
 			}
 		} catch (error) {
 			console.error('Error fetching previous queries:', error);
@@ -102,6 +102,7 @@
 		}
 	}
 
+	// This is the function to clear the data of notification componet at the bottom 
 	function clearNotificationStatus() {
 		notificationStatus = {
 			type: '',
@@ -112,6 +113,7 @@
 		};
 	}
 
+	// Function to check and disable the calculate button 
 	function checkDisableStatus() {
 		let sourceTextLength = source.length;
 		let destinationTextLength = destination.length;

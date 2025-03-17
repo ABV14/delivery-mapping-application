@@ -10,7 +10,7 @@
 
 function validation(value:string, label:string){
 		error = validateField(value, label);
-        console.log(error,'error is ')
+        console.log('error is ',error)
 	}
 </script>
 

@@ -8,12 +8,12 @@
     let totalPages = $state(1);
 
     $effect(() => {
+       
        const startingIndex = (currentPage - 1) * rowsPerPage;
-
        paginatedQueries = $previousQueries.slice(startingIndex, startingIndex + rowsPerPage);
 
        totalPages = Math.ceil($previousQueries.length / rowsPerPage);
-
+    
 });
 
     function goToNextPage(){
@@ -59,7 +59,7 @@
 		<button onclick={goToPreviousPage} disabled={currentPage === 1}>
 			Previous
 		</button>
-		<span>Page {currentPage} of {totalPages}</span>
+		<span>Page {paginatedQueries.length === 0 ? 0 : currentPage} of {paginatedQueries.length === 0 ? 0 :  totalPages}</span>
 		<button onclick={goToNextPage} disabled={currentPage === totalPages}>
 			Next
 		</button>

@@ -30,7 +30,10 @@ To run this application locally, you'll need:
 To run with Docker, you'll need:
 
 - [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+
+
+
+
 
 ## Local Setup and Installation
 
@@ -93,29 +96,26 @@ To run with Docker, you'll need:
    ```
    The Frontend will be available at http://localhost:5173
 
-## Running with Docker
+## Running with a Single Docker Container
 
-This project includes Docker configuration to run the entire stack with a single command.
+This project uses a single Dockerfile to set up and run the entire application stack:
 
-1. Build and start the containers:
+1. Place the Dockerfile and start.sh in your project root directory.
+
+2. Build the Docker image:
    ```bash
-   docker-compose up
+   docker build -t distance-calculator .
    ```
 
-   This will:
-   - Start a PostgreSQL database container
-   - Build and start the Express Backend container
-   - Build and start the Svelte Frontend container
-   - Set up networking between the containers
+3. Run the container:
+   ```bash
+   docker run -p 5173:5173 -p 3547:3547 -p 5432:5432 distance-calculator
+   ```
 
-2. The application will be available at:
+4. The application will be available at:
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:3000
-
-3. To stop the containers:
-   ```bash
-   docker-compose down
-   ```
+   - PostgreSQL: localhost:5432
 
 ## Development
 
