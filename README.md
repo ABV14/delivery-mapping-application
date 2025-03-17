@@ -151,7 +151,3 @@ npm run build  # If TypeScript is used
 
 - **Database Connection Issues**: Ensure PostgreSQL is running and the credentials in your `.env` file are correct
 - **Port Conflicts**: If ports 3000 or 5173 are already in use, modify the respective PORT variables in your `.env` files or Docker configuration
-
-## License
-
-[MIT](LICENSE)
