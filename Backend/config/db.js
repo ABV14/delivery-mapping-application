@@ -35,8 +35,10 @@ export const connectDB = async () => {
     try {
         await pool.connect();
         console.info('Connected to the database');
+        return;
 
     } catch (error) {
         console.error('Error connecting to the database', error);
+        return;
     }
 }
