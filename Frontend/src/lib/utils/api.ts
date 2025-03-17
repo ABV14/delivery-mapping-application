@@ -8,11 +8,16 @@ export async function fetchAPI<T>(url: string, options: RequestOptions={}): Prom
     try{
         const response = await fetch(urlToCall, options);
         console.log(response);
-        if(!response.ok){
+        if(response.status == 200){
+            return response.json();
+        }
+        else if(response.status == 400){
+             return response.json();
+        }
+       else{
             const errorText = await response.text();
             throw new Error(`HTTP error! status: ${response.status}-${errorText}`)
         }
-        return response.json();
     }
     catch(error){
         console.error(`Error fetching ${url}`,error);

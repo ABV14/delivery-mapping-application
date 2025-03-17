@@ -13,8 +13,8 @@ This module can be further scaled for handling database operations
 This function handles creationf of queryTable if it doesn't exist. If
 exists it returns false.  
 */
-export const createQueryTable = async () => {
-    try {
+export const checkAndCreateQueryTable = async () => {
+        try {
         // Check if the table exists
         const checkTableQuery = `
             SELECT EXISTS (
@@ -60,7 +60,6 @@ The insertQuery function handles insertion operations of the new user requests
 export const insertQuery = async (source_address, destination_address, distance_km, distance_miles) => {
     
     // Checking if the queries table exist, if not exists it creates a new table
-    const tableExists = await createQueryTable();
     
     console.log(`Debug: Source Address:${source_address} destination_addrees:${destination_address}  distance_km =", ${distance_km}, "distance miles:${distance_miles}`);
   

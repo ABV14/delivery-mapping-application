@@ -18,6 +18,7 @@ app.use(cors({
     //  allow it - Only for Local Developmet!!!!!
     if (!origin) return callback(null, true);
 
+    // If the origin is in the allowedOrigins array, allow it
     if (process.env.ALLOWED_ORIGINS.includes(origin)) {
       return callback(null, true);
     } else {
