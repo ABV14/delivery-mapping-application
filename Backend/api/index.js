@@ -42,8 +42,8 @@ app.use(express.json());
 app.use(express.static('public'))
 
 
-app.use('/distance', distanceRoute); // To use distance route for distance calculation
-app.use('/history', historyRoute); // To retrive history of distance calculation for previous queries
+app.use('/api/distance', distanceRoute); // To use distance route for distance calculation
+app.use('/api/history', historyRoute); // To retrive history of distance calculation for previous queries
 await connectDB(); // Connect to the database
 
 app.get('/', (req, res) => {
