@@ -19,7 +19,7 @@ const { Pool } = pkg;
 console.log(
     process.env.POSTGRES_USER,
     process.env.POSTGRES_HOST,
-   String(process.env.POSTGRES_DATABASE),
+    String(process.env.POSTGRES_DATABASE),
     String(process.env.POSTGRES_PASSWORD),
     Number(process.env.POSTGRES_PORT)
     ,"values are as above"
@@ -30,10 +30,13 @@ export const pool = new Pool({
     host: process.env.POSTGRES_HOST,
     database: String(process.env.POSTGRES_DATABASE),
     password: String(process.env.POSTGRES_PASSWORD),
-    port: Number(process.env.POSTGRES_PORT)
+    port: Number(process.env.POSTGRES_PORT),
+    ssl: {
+        rejectUnauthorized: false
+      }
 });
 
-
+console.log(pool,"pool is ")
 /**
  * ConnectDB(): 
  * Connects to the PostgreSQL database using the connection pool.
