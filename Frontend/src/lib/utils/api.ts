@@ -12,7 +12,7 @@ export async function fetchAPI<T>(url: string, options: RequestOptions={}): Prom
             return response.json();
         }
         else if(response.status == 400){
-             response.json();
+             return response.json();
         }
        else{
             const errorText = await response.text();
