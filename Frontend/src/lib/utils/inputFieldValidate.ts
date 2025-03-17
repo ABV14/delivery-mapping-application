@@ -1,53 +1,24 @@
-<script lang="ts">
-    import {validateField} from '$lib/utils/inputFieldValidate'
-
-    let {label, value = $bindable("")} = $props();
-    let error: { message: string; valid: boolean; } = $state({
-        message: "",
-        valid: false 
-    }); 
-
-
-function validation(value:string, label:string){
-		error = validateField(value, label);
-        console.log('error is ',error)
-	}
-</script>
-
-<div class="input-group">
-    <label for="input-field">{label}</label>
-    <input id="input-field" type="text" 
-    bind:value={value} placeholder="Input address" onblur={()=>validation(value,label)}
-    oninput={()=>validation(value,label)}
-    />
-    {#if error.message && !error.valid}
-    <span class="error">{error.message}</span>
-  {/if}
-</div>
-
-<style>
-    .input-group {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 1rem;
-        width: 75%;
+export function validateField(value:string,label:string):{ message: string, valid: boolean } {
+    let error:string=""
+    if(value === ""){
+        error=`${label} is required`;
     }
-    input[type="text"]{
-        background-color: #f8f8f6;
-        border : none;
-        border-bottom: 2px solid #7d7d7c;
-        text-align: left;
+    else if(value.length < 5){
+        error=`${label} must be at least 5 characters long`;
     }
-    input:focus{
-        border:2px solid black
+    else if(checkInvalidCharacter(value)){
+        error=`${label} Input contains invalid characters.`;
+        
     }
-    label{
-        color: #4b4949;
-        margin-bottom: 0.5rem;
+    return {
+        message: error,
+        valid: error === ""
+    };
+}
+
+export function checkInvalidCharacter(value:string){
+    if(/\b(SELECT|INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|TRUNCATE|EXEC|UNION|--|;|\/\*|\*\/)\b/i.test(value)){
+        return true ;
     }
-    .error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
-</style>
+    return false;
+}
