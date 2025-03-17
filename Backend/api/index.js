@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import distanceRoute from '../routes/distanceRoute.js';
 import historyRoute from '../routes/historyRoute.js';
-import { connectDB } from './config/db.js';
+import { connectDB } from '../config/db.js';
 
 dotenv.config(); // Load .env file into process.env
 
