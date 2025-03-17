@@ -7,6 +7,7 @@ db.js is a database configuration file which handles connections to database
 
 import pkg from 'pg';
 import dotenv from 'dotenv';
+import {checkAndCreateQueryTable} from '../models/query.js'
 
 dotenv.config();
 
