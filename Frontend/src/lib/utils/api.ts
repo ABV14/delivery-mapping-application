@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3546"
+const baseURL = import.meta.env.VITE_API_URL;
 
 type RequestOptions = RequestInit;
 
