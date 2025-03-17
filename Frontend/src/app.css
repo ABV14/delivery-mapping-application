@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+:global(html, body) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/* CSS override */
+input:focus {
+    --tw-ring-color: none;
+}
+input[type='radio']  {
+    /* --tw-ring-color: black; */
+    color: black !important;
+    /* filter: invert(1); */
+    
+}
+input[type='radio']:checked {
+    /* --tw-ring-color: black; */
+    color: black !important;
+    border: 1px solid rgb(255, 255, 255);
+    filter: invert(1);
+    
+}
+  
