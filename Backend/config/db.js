@@ -16,6 +16,14 @@ const { Pool } = pkg;
 // This pool will manage and reuse client connections to the PostgreSQL database,
 // ensuring efficient database operations within the app.
 
+console.log(
+    process.env.POSTGRES_USER,
+    process.env.POSTGRES_HOST,
+   String(process.env.POSTGRES_DATABASE),
+    String(process.env.POSTGRES_PASSWORD),
+    Number(process.env.POSTGRES_PORT)
+    ,"values are as above"
+)
 
 export const pool = new Pool({
     user: process.env.POSTGRES_USER,
