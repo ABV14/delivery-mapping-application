@@ -1,9 +1,9 @@
 import serverless from 'serverless-http';
 import app from '../index.js';
 
-const allowedOrigins = [
-    'https://delivery-mapping-applicati-git-655e41-abhivarma-birrus-projects.vercel.app'
-  ];
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
+  : [];
   
 app.use(cors({
 origin: function(origin, callback) {
