@@ -31,6 +31,7 @@ export const pool = new Pool({
 export const connectDB = async () => {
     try {
         await pool.connect();
+        await checkAndCreateQueryTable();
         console.info('Connected to the database');
         return;
 

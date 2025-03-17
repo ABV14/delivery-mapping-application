@@ -13,7 +13,7 @@ This module can be further scaled for handling database operations
 This function handles creationf of queryTable if it doesn't exist. If
 exists it returns false.  
 */
-export const createQueryTable = async () => {
+export const checkAndCreateQueryTable = async () => {
     try {
         // Check if the table exists
         const checkTableQuery = `
