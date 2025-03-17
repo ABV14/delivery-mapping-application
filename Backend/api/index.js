@@ -1,5 +1,6 @@
 import serverless from 'serverless-http';
 import app from '../index.js';
+import cors from 'cors';
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
