@@ -2,7 +2,7 @@ import serverless from 'serverless-http';
 import app from '../index.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import {connectDB} from '../config/db.js';
+import connectDB from '../config/db.js';
 
 dotenv.config(); 
 
@@ -32,5 +32,7 @@ app.use(cors({
 connectDB()
   .then(() => console.log('Database connected successfully.'))
   .catch(err => console.error('Database connection error:', err));
+
+app.listen(5252, () => console.log("Server ready on port 5252."));
 
 export default serverless(app);
