@@ -2,7 +2,6 @@ import serverless from 'serverless-http';
 import app from '../index.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import {connectDB} from '../config/db.js';
 
 dotenv.config(); 
 
@@ -16,11 +15,10 @@ if (process.env.ALLOWED_ORIGINS) {
 } else {
   allowedOrigins = [];
 }
+console.log('Allowed origins:', allowedOrigins);
 
 app.use(cors({
   origin: (origin, callback) => {
-    console.log("origigigi", origin)
-    console.log("origigigi is true",allowedOrigins.includes(origin));
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
@@ -28,12 +26,5 @@ app.use(cors({
     }
   }
 }));
-
-app.listen(5252, () => console.log("Server ready on port 5252."));
-
-connectDB()
-  .then(() => console.log('Database connected successfully.'))
-  .catch(err => console.error('Database connection error:', err));
-
 
 export default serverless(app);

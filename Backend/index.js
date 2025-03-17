@@ -3,8 +3,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import distanceRoute from './routes/distanceRoute.js';
 import historyRoute from './routes/historyRoute.js';
+import { connectDB } from './config/db.js';
 
-dotenv.config(); 
+dotenv.config(); // Load .env file into process.env
 
 const app = express();
 
@@ -38,13 +39,16 @@ app.use(cors({
 
 
 app.use(express.json());
+app.use(express.static('public'))
 
 
 app.use('/distance', distanceRoute); // To use distance route for distance calculation
 app.use('/history', historyRoute); // To retrive history of distance calculation for previous queries
+connectDB(); // Connect to the database
 
-app.get('/', async (req, res) => {
-    res.status(200).send('Backend Started Running!!!!');
+app.get('/', (req, res) => {
+  app.use(express.static('public'))
+    res.send('Backend Started Running!!!!');
 });
 app.use((err, req, res, next) => {
     console.error(err.stack);

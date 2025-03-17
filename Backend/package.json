@@ -1,5 +1,5 @@
 {
-  "name": "delivery-mapping-application",
+  "name": "distance-calculator-application",
   "version": "1.0.0",
   "type": "module",
   "main": "server.js",
