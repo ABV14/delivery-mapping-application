@@ -14,7 +14,8 @@ This README provides detailed instructions for setting up and running the projec
 distance-calculator(root)/
 ├── Frontend/       # Svelte Frontend application
 ├── Backend/        # Express.js Backend application
-└── README.md       # This documentation file
+└── README.md       # Documentation file
+└── Dockerfile      #Docker file
 ```   
 
 
