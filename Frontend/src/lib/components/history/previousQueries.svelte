@@ -8,12 +8,17 @@
     let totalPages = $state(1);
 
     $effect(() => {
-       const startingIndex = (currentPage - 1) * rowsPerPage;
-
+        if(paginatedQueries.length==0){
+            currentPage=0;  
+            totalPages=0;  
+        }
+        else{
+        
+        const startingIndex = (currentPage - 1) * rowsPerPage;
        paginatedQueries = $previousQueries.slice(startingIndex, startingIndex + rowsPerPage);
 
        totalPages = Math.ceil($previousQueries.length / rowsPerPage);
-
+    }
 });
 
     function goToNextPage(){
