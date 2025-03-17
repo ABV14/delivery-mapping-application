@@ -31,9 +31,7 @@ export const pool = new Pool({
     database: String(process.env.POSTGRES_DATABASE),
     password: String(process.env.POSTGRES_PASSWORD),
     port: Number(process.env.POSTGRES_PORT),
-    ssl: {
-        rejectUnauthorized: false
-      }
+ 
 });
 
 console.log(pool,"pool is ")

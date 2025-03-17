@@ -10,20 +10,31 @@ connectDB(); // Connect to the database
 
 const app = express();
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
-  : [];
+let allowedOrigins = [];
+if (process.env.ALLOWED_ORIGINS) {
+  try {
+    // Try to parse the env variable as JSON, e.g. '["https://delivery-mapping-application-abv.vercel.app","http://localhost:5174/"]'
+    allowedOrigins = JSON.parse(process.env.ALLOWED_ORIGINS);
+  } catch (error) {
+    // Fallback: split by comma and trim spaces if JSON parsing fails
+    allowedOrigins = process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim());
+  }
+} else {
+  allowedOrigins = [];
+}
 console.log('Allowed origins:', allowedOrigins);
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like curl or Postman) if desired:
+    console.log("origigigi", origin)
+    // If no origin is provided (like in some server-to-server requests), allow it
     if (!origin) return callback(null, true);
 
+    // If the origin is in the allowedOrigins array, allow it
     if (allowedOrigins.includes(origin)) {
-      callback(null, true);
+      return callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      return callback(new Error('Not allowed by CORS'));
     }
   }
 }));
