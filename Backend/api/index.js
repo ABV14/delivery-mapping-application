@@ -29,10 +29,11 @@ app.use(cors({
   }
 }));
 
+app.listen(5252, () => console.log("Server ready on port 5252."));
+
 connectDB()
   .then(() => console.log('Database connected successfully.'))
   .catch(err => console.error('Database connection error:', err));
 
-app.listen(5252, () => console.log("Server ready on port 5252."));
 
 export default serverless(app);
