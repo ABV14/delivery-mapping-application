@@ -111,7 +111,7 @@ This project uses a single Dockerfile to set up and run the entire application s
 
 3. Run the container:
    ```bash
-   docker run -p 5173:5173 -p 3547:3547 -p 5432:5432 distance-calculator
+   docker run -p 5173:5173 -p 3000:3000 -p 5432:5432 distance-calculator
    ```
 
 4. The application will be available at:
